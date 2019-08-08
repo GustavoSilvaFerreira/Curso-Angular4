@@ -43,7 +43,6 @@ export class OrderComponent implements OnInit {
   }
 
   static equalsTo(group: AbstractControl): {[key: string]: boolean} {
-    console.log('te');
 
     const email = group.get('email');
     const emailConfirmation = group.get('emailConfirmation');
@@ -53,30 +52,30 @@ export class OrderComponent implements OnInit {
     }
 
     if(email.value !== emailConfirmation.value) {
-      return {emailsNotMatch: true}
+      return {emailsNotMatch: true};
     }
     return undefined;
-  }
+  };
 
   itemsValue(): number {
     return this.orderService.itemsValue();
-  }
+  };
 
   cartItems(): CartItem[] {
     return this.orderService.cartItems();
-  }
+  };
 
   increaseQty(item: CartItem) {
     this.orderService.increaseQty(item);
-  }
+  };
 
   decreaseQty(item: CartItem) {
     this.orderService.decreaseQty(item);
-  }
+  };
 
   remove(item: CartItem) {
     this.orderService.remove(item);
-  }
+  };
 
   checkOrder(order: Order) {
     order.orderItems = this.cartItems()
@@ -87,8 +86,6 @@ export class OrderComponent implements OnInit {
         this.router.navigateByUrl('/order-summary');
         this.orderService.clear();
       })
-
-    console.log(order);
-  }
+  };
 
 }

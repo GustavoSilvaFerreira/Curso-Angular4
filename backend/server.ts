@@ -4,6 +4,8 @@ import { Express } from 'express';
 import * as fs from 'fs';
 import * as https from 'https';
 
+import { handleAuthentication } from './auth';
+
 const server: Express = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
@@ -16,6 +18,8 @@ server.use(middlewares);
 // You can use the one used by JSON Server
 server.use(jsonServer.bodyParser)
 
+// middleware para login
+server.post('/login', handleAuthentication);
 
 // Use default router
 server.use(router)

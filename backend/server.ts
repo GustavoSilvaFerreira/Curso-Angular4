@@ -31,6 +31,9 @@ const options = {
   key: fs.readFileSync('./backend/keys/key.pem'),
 };
 
-https.createServer(options, server).listen(port, () => {
+server.listen(port, () => {
   console.log('JSON Server is running on port:' + port);
 });
+// https.createServer(options, server).listen(port, () => {
+//   console.log('JSON Server is running on port:' + port);
+// });

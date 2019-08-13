@@ -32,5 +32,5 @@ const options = {
 };
 
 https.createServer(options, server).listen(port, () => {
-  console.log('JSON Server is running on https://localhost:' + port);
+  console.log('JSON Server is running on port:' + port);
 });

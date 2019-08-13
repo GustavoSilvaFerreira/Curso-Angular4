@@ -10,7 +10,7 @@ import { handleAuthorization } from './authz';
 const server: Express = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
-const port = 3001;
+const port = process.env.PORT || 4000;
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares);

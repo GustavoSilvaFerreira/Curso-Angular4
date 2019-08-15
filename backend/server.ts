@@ -10,7 +10,7 @@ import { handleAuthorization } from './authz';
 const server: Express = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares);
@@ -31,7 +31,7 @@ const options = {
   key: fs.readFileSync('./backend/keys/key.pem'),
 };
 
-server.listen(port, () => {
+https.createServer(options, server).listen(port, () => {
   console.log('JSON Server is running on port:' + port);
 });
 // https.createServer(options, server).listen(port, () => {

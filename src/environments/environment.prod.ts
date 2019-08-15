@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'https://localhost:3001',
+  api: 'https://meat-api-angular2.herokuapp.com',
 };

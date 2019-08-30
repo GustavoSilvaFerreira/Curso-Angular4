@@ -22,7 +22,7 @@
             ],
             "styles": [
               "node_modules/font-awesome/css/font-awesome.min.css",
-              "node_modules/admin-lte/bootstrap/css/bootstrap.min.css",
+              "node_modules/admin-lte/bower_components/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/admin-lte/dist/css/AdminLTE.min.css",
               "node_modules/admin-lte/dist/css/skins/skin-red.min.css",
               "node_modules/admin-lte/plugins/iCheck/flat/red.css",
@@ -30,8 +30,7 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/admin-lte/bootstrap/js/bootstrap.min.js",
-              "node_modules/admin-lte/dist/js/app.min.js"
+              "node_modules/admin-lte/bower_components/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {

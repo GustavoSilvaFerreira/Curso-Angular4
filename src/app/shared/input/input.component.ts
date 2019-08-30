@@ -13,8 +13,8 @@ export class InputComponent implements OnInit, AfterContentInit {
 
   input: any;
 
-  @ContentChild(NgModel) model: NgModel;
-  @ContentChild(FormControlName) control: FormControlName;
+  @ContentChild(NgModel, /* TODO: add static flag */ {static: false}) model: NgModel;
+  @ContentChild(FormControlName, /* TODO: add static flag */ {static: false}) control: FormControlName;
 
   constructor() { }
 

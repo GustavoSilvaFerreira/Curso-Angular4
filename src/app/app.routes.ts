@@ -21,8 +21,8 @@ export const ROUTES: Routes = [
     { path: 'reviews', component: ReviewsComponent }
   ]},
   {path: 'restaurants', component: RestaurantsComponent},
-  {path: 'order', loadChildren: './order/order.module#OrderModule', canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
+  {path: 'order', loadChildren: () => import('./order/order.module').then(m => m.OrderModule), canLoad: [LoggedInGuard], canActivate: [LoggedInGuard]},
   {path: 'order-summary', component: OrderSummaryComponent},
-  {path: 'about', loadChildren: './about/about.module#AboutModule'},
+  {path: 'about', loadChildren: () => import('./about/about.module').then(m => m.AboutModule)},
   {path: '**', component: NotFoundComponent},
 ]

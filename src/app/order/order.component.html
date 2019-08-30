@@ -89,7 +89,7 @@
       <div class="row">
         <!-- accepted payments column -->
         <div class="col-sm-6 col-xs-12">
-          <p class="lead">Formas de Pagamento:</p>
+          <p class="lead">Formas de Pagamento:</p> {{ orderForm.value | json }}
 
             <div class="form-group">
               <mt-radio [options]="paymentOptions" formControlName="paymentOption"></mt-radio>

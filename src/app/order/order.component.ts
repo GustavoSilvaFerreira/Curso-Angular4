@@ -7,6 +7,9 @@ import { CartItem } from 'app/restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
 
+import { LoginService } from '../security/login/login.service';
+import { User } from '../security/login/user.model';
+
 import { tap } from 'rxjs/operators';
 
 @Component({
@@ -24,6 +27,8 @@ export class OrderComponent implements OnInit {
 
   orderId: string;
 
+  user: User;
+
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
     { label: 'Cartão de Débito', value: 'DEB' },
@@ -32,20 +37,26 @@ export class OrderComponent implements OnInit {
 
   constructor(private orderService: OrderService,
               private router: Router,
-              private formBuilder: FormBuilder) { }
+              private formBuilder: FormBuilder,
+              private loginService: LoginService) { }
 
   ngOnInit() {
+
+    if(this.loginService.user) {
+      this.user = this.loginService.user;
+    }
+
     this.orderForm = new FormGroup({
-      name: new FormControl('', {
+      name: new FormControl(this.user.name, {
         validators: [Validators.required, Validators.minLength(5)]
       }),
-      email: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
-      emailConfirmation: this.formBuilder.control('', [Validators.required, Validators.pattern(this.emailPattern)]),
+      email: this.formBuilder.control(this.user.email, [Validators.required, Validators.pattern(this.emailPattern)]),
+      emailConfirmation: this.formBuilder.control(this.user.email, [Validators.required, Validators.pattern(this.emailPattern)]),
       address: this.formBuilder.control('', [Validators.required, Validators.minLength(5)]),
       number: this.formBuilder.control('', [Validators.required, Validators.pattern(this.numberPattern)]),
       optionalAddress: this.formBuilder.control(''),
       paymentOption: this.formBuilder.control('', [Validators.required])
-    }, {validators: [OrderComponent.equalsTo], updateOn: 'blur'})
+    }, {validators: [OrderComponent.equalsTo]});
   }
 
   static equalsTo(group: AbstractControl): {[key: string]: boolean} {
